@@ -38,6 +38,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define test 1
 #define V_cons 15 //15V
 #define ADC_BUFFER_SIZE 4096
 /* USER CODE END PD */
