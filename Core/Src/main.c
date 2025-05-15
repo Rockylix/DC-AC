@@ -40,7 +40,7 @@
 /* USER CODE BEGIN PD */
 #define test 1
 #define V_cons 15 //15V
-#define ADC_BUFFER_SIZE 4096
+#define ADC_BUFFER_SIZE 4000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -152,6 +152,8 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   MX_TIM3_Init();
+  MX_TIM2_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   //�????????启pwm�????????
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
@@ -160,10 +162,11 @@ int main(void)
 	
   //�????????启定时器中断兼dma
   HAL_ADC_Start_DMA(&hadc1, (uint32_t*)adc_buffer, ADC_BUFFER_SIZE);
-
+	
   //�????????启载波定时器中断
   HAL_TIM_Base_Start_IT(&htim1);
-  
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
+	
   // 初始化OLED
 	OLED_Init();
   OLED_Display_On();
